@@ -1,0 +1,11 @@
+
+ <form method="post">
+    {% csrf_token %}
+    <h3>Temps de réglage pour chaque machine (SIST)</h3>
+    {% for m in machine_range %}
+        <label for="setup_time_machine_{{ m }}">Temps de réglage pour la machine {{ m }}:</label>
+        <input type="number" name="setup_time_machine_{{ m }}" id="setup_time_machine_{{ m }}" required>
+        <br>
+    {% endfor %}
+    <button type="submit">Enregistrer</button>
+</form>

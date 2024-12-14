@@ -1,0 +1,40 @@
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        Veuillez remplir les informations pour chaque job. Sélectionnez une machine et entrez le temps de traitement pour chaque étape.
+    </p>
+    {% for job in jobs_range %}
+        <h3>Job {{ job }}</h3>
+        <table border="1" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Étape</th>
+                    <th>Machine assignée</th>
+                    <th>Temps de traitement (en unités)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for operation in machines_range %}
+                <tr>
+                    <td>Étape {{ operation }}</td>
+                    <td>
+                        <!-- Sélection de la machine -->
+                        <select name="machine_{{ job }}_{{ operation }}" required>
+                            <option value="" disabled selected>Choisir une machine</option>
+                            {% for m in machines_range %}
+                            <option value="{{ m }}">Machine {{ m }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <!-- Temps de traitement -->
+                        <input type="number" name="temps_{{ job }}_{{ operation }}" placeholder="Temps" min="1" required>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    {% endfor %}
+    <button type="submit" style="padding: 10px 20px; font-size: 16px;">Valider</button>
+</form>

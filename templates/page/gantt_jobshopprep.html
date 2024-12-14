@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme de Gantt - Ordonnancement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #555;
+        }
+        .gantt-image {
+            margin-top: 2rem;
+        }
+        .btn-refresh {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-refresh:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diagramme de Gantt - Ordonnancement avec Préparation</h1>
+        {% if graphic %}
+        <div class="gantt-image">
+            <img src="data:image/png;base64,{{ graphic }}" alt="Diagramme de Gantt">
+        </div>
+        {% else %}
+        <p>Aucun graphique disponible pour le moment.</p>
+        {% endif %}
+        <form method="get">
+            <button type="submit" class="btn-refresh">Actualiser le graphique</button>
+        </form>
+    </div>
+</body>
+</html>

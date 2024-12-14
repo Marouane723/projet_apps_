@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choix des Règles de Priorité</title>
+</head>
+<body>
+    <h1>Choisissez une Règle de Priorité</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            <input type="radio" name="regle" value="FIFO" required>
+            FIFO (First In, First Out)
+        </label><br>
+
+        <label>
+            <input type="radio" name="regle" value="LIFO">
+            LIFO (Last In, First Out)
+        </label><br>
+
+        <label>
+            <input type="radio" name="regle" value="SPT">
+            SPT (Shortest Processing Time)
+        </label><br>
+
+        <label>
+            <input type="radio" name="regle" value="EDD">
+            EDD (Earliest Due Date)
+        </label><br>
+
+        <label>
+            <input type="radio" name="regle" value="LPT">
+            LPT (Longest Processing Time)
+        </label><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie des jobs pour C1</title>
+</head>
+<body>
+    <h1>Saisie des jobs pour la classe C1</h1>
+
+    <!-- Bouton pour aller à la page C2 -->
+    <form method="get" action="{% url 'saisie_classe_2' %}">
+        <button type="submit">Aller à la page C2</button>
+    </form>
+
+    <br> <!-- Espacement entre le bouton et le formulaire -->
+
+    <!-- Formulaire pour ajouter des jobs -->
+    <form method="post">
+        {% csrf_token %}
+        <label for="job_id">ID du job :</label>
+        <input type="number" name="job_id" id="job_id" required placeholder="Entrez l'ID du job"><br><br>
+
+        <label for="machine_time_1">Temps machine 1 :</label>
+        <input type="number" name="machine_time_1" id="machine_time_1" required placeholder="Temps sur la machine 1"><br><br>
+
+        <button type="submit" name="action" value="add_job">Ajouter le job</button>
+    </form>
+
+    <!-- Liste des jobs enregistrés -->
+    <h2>Jobs enregistrés pour la classe C1</h2>
+    <ul>
+        {% for job in jobs_C1 %}
+            <li>
+                <strong>Job ID :</strong> {{ job.job_id }},
+                <strong>Temps :</strong> Machine 1 = {{ job.machine_times.0 }}, Machine 2 = {{ job.machine_times.1 }}
+            </li>
+        {% empty %}
+            <li>Aucun job enregistré pour cette classe.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Bouton pour valider les jobs -->
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="validate_jobs">Valider les jobs</button>
+    </form>
+
+    <!-- Bouton pour réinitialiser la session -->
+    <form method="get" action="">
+        <button type="submit" name="reset" value="1">Réinitialiser la session</button>
+    </form>
+</body>
+</html>

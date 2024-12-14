@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temps de Réglage (SDST)</title>
+    <style>
+        /* Ajoutez vos styles CSS ici */
+    </style>
+</head>
+<body>
+    <h1>Temps de Réglage (SDST)</h1>
+    <div class="info">
+        Veuillez saisir les temps de réglage pour chaque machine et chaque combinaison de jobs.
+    </div>
+    <form action="{% url 'setup_time_view' %}" method="POST">
+        {% csrf_token %}
+        {% for m in machines_range %}
+        <div class="machine-section">
+            <h2 class="machine-title">Machine {{ m }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>De Job</th>
+                        <th>À Job</th>
+                        <th>Temps de Réglage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job_courant in jobs_list %}
+                        {% for job_precedent in jobs_list %}
+                        <tr>
+                            <td>Job {{ job_courant }}</td>
+                            <td>Job {{ job_precedent }}</td>
+                            <td>
+                                <input
+                                    type="number"
+                                    name="setup_time_{{ m }}_{{ job_courant }}_{{ job_precedent }}"
+                                    min="0"
+                                    placeholder="0"
+                                    required>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+        <button type="submit">Enregistrer</button>
+    </form>
+</body>
+</html>
+

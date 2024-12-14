@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme de Gantt - Atelier Job Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .gantt-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diagramme de Gantt pour l'atelier Job Shop</h1>
+    <p>Ce diagramme montre l'ordonnancement des tâches pour les machines 1 et 2.</p>
+
+    <!-- Conteneur pour le diagramme de Gantt -->
+    <div class="gantt-container">
+        <img src="data:image/png;base64,{{ gantt_image }}" alt="Diagramme de Gantt">
+    </div>
+</body>
+</html>

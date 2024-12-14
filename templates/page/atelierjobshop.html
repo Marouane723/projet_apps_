@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix des Règles de Priorité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: #fff;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #003d7a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choix des Règles de Priorité</h1>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Choisissez un cas:</legend>
+            <label>
+                <input type="radio" name="atelierjobshop" value="SPT" required>
+                Règle SPT
+            </label>
+            <label>
+                <input type="radio" name="atelierjobshop" value="LPT" required>
+                Règle LPT
+            </label>
+            <label>
+                <input type="radio" name="atelierjobshop" value="Atelier a deux machine" required>
+                Atelier à deux machines
+            </label>
+        </fieldset>
+        <button type="submit">Enregistrer</button>
+    </form>
+</body>
+</html>

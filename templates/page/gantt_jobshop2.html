@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme de Gantt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, p {
+            text-align: center;
+            color: #333;
+        }
+
+        .diagram-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .gantt-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="diagram-container">
+    <h1>Diagramme de Gantt - Ordonnancement Job Shop</h1>
+    <div class="info">
+        <p><strong>Cmax :</strong> {{ Cmax }}</p>
+        <p>Le diagramme ci-dessous montre l'ordonnancement basé sur les données saisies.</p>
+    </div>
+
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Diagramme de Gantt" class="gantt-image">
+
+    <div class="btn-container">
+        <a href="{% url 'temps_preparation_saisie' %}">
+            <button type="button">Modifier les Temps de Préparation</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
+>
